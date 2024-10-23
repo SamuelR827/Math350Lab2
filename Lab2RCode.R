@@ -1,6 +1,3 @@
-# Install necessary packages
-install.packages("readxl")
-install.packages("ggplot2")
 
 # Load libraries
 library(readxl)
@@ -39,3 +36,14 @@ ggplot(data, aes(x = Cut_Group_Z3, y = dE00_Group_Z3)) +
   xlab("Cut Level (Zirkonzahn)") +
   ylab("ΔE00 (Zirkonzahn)") +
   theme_minimal()
+
+# Plot diagnostic plots for Degudent Group
+par(mfrow = c(2, 2)) # Arrange 2x2 plot layout for diagnostics
+plot(degudent_model, which = 1:4) # Residuals vs Fitted, QQ, Scale-Location, Residuals vs Leverage
+
+# Plot diagnostic plots for Zirkonzahn Group
+par(mfrow = c(2, 2)) # Arrange 2x2 plot layout for diagnostics
+plot(zirkonzahn_model, which = 1:4) # Residuals vs Fitted, QQ, Scale-Location, Residuals vs Leverage
+
+
+
