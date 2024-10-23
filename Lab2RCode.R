@@ -46,4 +46,15 @@ par(mfrow = c(2, 2)) # Arrange 2x2 plot layout for diagnostics
 plot(zirkonzahn_model, which = 1:4) # Residuals vs Fitted, QQ, Scale-Location, Residuals vs Leverage
 
 
+# Coefficients for Degudent Group
+degudent_coeff <- coef(degudent_model)
+degudent_cut_estimate <- (1.8 - degudent_coeff[1]) / degudent_coeff[2]
+
+# Coefficients for Zirkonzahn Group
+zirkonzahn_coeff <- coef(zirkonzahn_model)
+zirkonzahn_cut_estimate <- (1.8 - zirkonzahn_coeff[1]) / zirkonzahn_coeff[2]
+
+# Display estimates
+degudent_cut_estimate
+zirkonzahn_cut_estimate
 
