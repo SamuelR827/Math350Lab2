@@ -109,9 +109,14 @@ b1, where b1 ≠ 0.
     cat("Predicted Cut Level for Zirkonzahn at ΔE00 = 1.8:", zirkonzahn_cut_estimate, "\n")
 
 Results:
+
     Degudent Cut Estimates Intercept : 90.04147 
+    
     Zirkonzahn Cut Estimates Intercept: 98.10153 
+    
     Predicted Cut Level for Degudent at ΔE00 = 1.8: 90.04147 
+    
     Predicted Cut Level for Zirkonzahn at ΔE00 = 1.8: 98.10153 
+    
 
 
