@@ -1,4 +1,8 @@
 
+############################################################################
+# Question 1
+############################################################################
+
 # Load libraries
 library(readxl)
 library(ggplot2)
@@ -36,6 +40,11 @@ ggplot(data, aes(x = Cut_Group_Z3, y = dE00_Group_Z3)) +
   xlab("Cut Level (Zirkonzahn)") +
   ylab("ΔE00 (Zirkonzahn)") +
   theme_minimal()
+
+
+############################################################################
+# Question 2
+############################################################################
 
 # Plot diagnostic plots for Degudent Group
 par(mfrow = c(2, 2)) # Arrange 2x2 plot layout for diagnostics
