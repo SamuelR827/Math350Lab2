@@ -23,4 +23,12 @@ Zirkonzahn Group:
 
 Overall, both models fit well, with R-squared values close to 1, showing that Cut Level is a strong predictor of ΔE00 for both groups. The Degudent group has a slightly higher slope, suggesting that ΔE00 increases more steeply with Cut Level compared to Zirkonzahn.
 
+---
+
+2.) Use the regression lines above to estimate the predicted value of the cut level for the acceptability
+threshold of ΔE 00=1.8 μm:
+Given the linear regression equation ^y=b0 +b1 x and the specified value yh, we want to estimate the
+corresponding level xh that gave rise to it. We obtain a point estimator by solving the estimated
+regression equation for x by^xh= yh−b0
+b1, where b1 ≠ 0.
 
