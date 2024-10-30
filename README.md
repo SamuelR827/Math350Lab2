@@ -32,3 +32,5 @@ corresponding level xh that gave rise to it. We obtain a point estimator by solv
 regression equation for x by^xh= yh−b0
 b1, where b1 ≠ 0.
 
+
+
