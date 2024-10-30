@@ -58,3 +58,19 @@ zirkonzahn_cut_estimate <- (1.8 - zirkonzahn_coeff[1]) / zirkonzahn_coeff[2]
 degudent_cut_estimate
 zirkonzahn_cut_estimate
 
+# Define the acceptability threshold for ΔE00
+y_h <- 1.8
+
+# Extract coefficients for Degudent Group
+degudent_intercept <- coef(degudent_model)[1]
+degudent_slope <- coef(degudent_model)[2]
+degudent_cut_estimate <- (y_h - degudent_intercept) / degudent_slope
+
+# Extract coefficients for Zirkonzahn Group
+zirkonzahn_intercept <- coef(zirkonzahn_model)[1]
+zirkonzahn_slope <- coef(zirkonzahn_model)[2]
+zirkonzahn_cut_estimate <- (y_h - zirkonzahn_intercept) / zirkonzahn_slope
+
+# Display estimated cut levels
+cat("Predicted Cut Level for Degudent at ΔE00 = 1.8:", degudent_cut_estimate, "\n")
+cat("Predicted Cut Level for Zirkonzahn at ΔE00 = 1.8:", zirkonzahn_cut_estimate, "\n")
