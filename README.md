@@ -1,11 +1,13 @@
 # Math350Lab2
 
-
-1.) Fit a regression model of Y vs X for your two groups for Degudent and Zirkonzahn using Cut Level for
+## Question 1
+Fit a regression model of Y vs X for your two groups for Degudent and Zirkonzahn using Cut Level for
 X and ΔE 00 for Y. Provide the scatter plot with the regression curve and a summary of your regression
 analysis. Comment on how well your model fits the data.
 
-See the attached picture for the scatter plot: <Pictures/Degudent_Group_Cut_Level_vs_E00.png>
+See the attached picture for the scatter plot: 
+![Scatter Plot Degudent](Pictures/Scatter-Plot-Degudent-Group-600x500.png)
+![Scatter Plot Zirkonzahn](Pictures/Scatter-Plot-Zirkonzahn-Group-600x500.png)
 
     # Load libraries
     library(readxl)
@@ -61,9 +63,10 @@ Zirkonzahn Group:
 
 Overall, both models fit well, with R-squared values close to 1, showing that Cut Level is a strong predictor of ΔE00 for both groups. The Degudent group has a slightly higher slope, suggesting that ΔE00 increases more steeply with Cut Level compared to Zirkonzahn.
 
----
 
-2.) Use the regression lines above to estimate the predicted value of the cut level for the acceptability
+
+## Question 2
+Use the regression lines above to estimate the predicted value of the cut level for the acceptability
 threshold of ΔE 00=1.8 μm:
 Given the linear regression equation ^y=b0 +b1 x and the specified value yh, we want to estimate the
 corresponding level xh that gave rise to it. We obtain a point estimator by solving the estimated
@@ -117,10 +120,11 @@ Results:
     Predicted Cut Level for Degudent at ΔE00 = 1.8: 90.04147 
     
     Predicted Cut Level for Zirkonzahn at ΔE00 = 1.8: 98.10153 
-    
----
+  
+  
 
-3.) What cut levels should you include in your linear regression to best estimate 
+## Question 3
+What cut levels should you include in your linear regression to best estimate 
 your cut level corresponding to the acceptability threshold of ΔE00=1.8 μm? 
 Explain your thinking. *This might be different for Degudent and Zirkonzahn.*
 
@@ -134,9 +138,14 @@ We found that for Degudent, we needed to omit 300, 400, and 500 from our data be
 they were outside of our prediction interval. For Zirkonzahn, we only removed data
 at the 500 level, because that gave us the best R-squared.
 
----
+Adjusted scatter plots:
+![Scatter Plot Degudent Omitted](Pictures/Scatter-Plot-Degudent-Group-Omitted-600x500.png)
+![Scatter Plot Zirkonzahn Omitted](Pictures/Scatter-Plot-Zirkonzahn-Group-Omitted-600x500.png)
 
-4.) Check the assumptions for calculating a confidence interval for ^xh, and use a 0.05 significance level to
+
+
+## Question 4
+Check the assumptions for calculating a confidence interval for ^xh, and use a 0.05 significance level to
 find the confidence intervals for the predicted values in part (3). To find the confidence interval for^xh,
 we take (see main project docs for formula, broke on paste into file)
 
