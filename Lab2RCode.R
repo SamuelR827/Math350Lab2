@@ -139,11 +139,11 @@ plot(zirkonzahn_model_omit)
 par(mfrow = c(1, 1))
 
 # Degudent prediction with confidence interval
-d_new_data <- data.frame(Cut_Group_D3 = 500) # Replace 500 with your target value if different
+d_new_data <- data.frame(Cut_Group_D3 = 100)
 degudent_prediction <- predict(degudent_model_omit, d_new_data, interval = "confidence", level = 0.95)
 
 # Zirkonzahn prediction with confidence interval
-z_new_data <- data.frame(Cut_Group_Z3 = 500) # Replace 500 with your target value if different
+z_new_data <- data.frame(Cut_Group_Z3 = 100)
 zirkonzahn_prediction <- predict(zirkonzahn_model_omit, z_new_data, interval = "confidence", level = 0.95)
 
 # Display predictions and confidence intervals
