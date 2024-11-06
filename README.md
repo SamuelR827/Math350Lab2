@@ -131,8 +131,8 @@ and the overall fit of your regression line as it pertains to the estimated cut
 level for the acceptability threshold.
 
 We found that for Degudent, we needed to omit 300, 400, and 500 from our data because
-they were outside of our prediction interval. For Zirkonzahn, all given data was 
-inside our prediction interval, so nothing had to be removed.
+they were outside of our prediction interval. For Zirkonzahn, we only removed data
+at the 500 level, because that gave us the best R-squared.
 
 ---
 

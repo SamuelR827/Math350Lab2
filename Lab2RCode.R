@@ -18,10 +18,10 @@ degudent_model <- lm(dE00_Group_D3 ~ Cut_Group_D3, data = data)
 zirkonzahn_model <- lm(dE00_Group_Z3 ~ Cut_Group_Z3, data = data)
 
 # Summary of regression for Degudent Group
-summary(degudent_model)
+summary(degudent_model) # R2 0.977
 
 # Summary of regression for Zirkonzahn Group
-summary(zirkonzahn_model)
+summary(zirkonzahn_model) # R2 0.983
 
 # Plot for Degudent Group
 ggplot(data, aes(x = Cut_Group_D3, y = dE00_Group_D3)) +
@@ -90,7 +90,7 @@ cat("Predicted Cut Level for Zirkonzahn at ΔE00 = 1.8:", zirkonzahn_cut_estimat
 ############################################################################
 
 degudent_data_omit <- subset(data, !(`Desired Cut` %in% c(300, 400, 500)))
-zirkonzahn_data_omit <- subset(data, !(`Desired Cut` %in% c()))
+zirkonzahn_data_omit <- subset(data, !(`Desired Cut` %in% c(500)))
 
 degudent_model_omit <- lm(dE00_Group_D3 ~ Cut_Group_D3, data = degudent_data_omit)
 zirkonzahn_model_omit <- lm(dE00_Group_Z3 ~ Cut_Group_Z3, data = zirkonzahn_data_omit)
