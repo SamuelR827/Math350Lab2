@@ -98,8 +98,8 @@ zirkonzahn_model_omit <- lm(dE00_Group_Z3 ~ Cut_Group_Z3, data = zirkonzahn_data
 summary(degudent_model_omit)
 summary(zirkonzahn_model_omit)
 
-d_new_data <- data.frame(`Cut_Group_D3` = 500)
-z_new_data <- data.frame(`Cut_Group_Z3` = 500)
+d_new_data <- data.frame(`Cut_Group_D3` = 400)
+z_new_data <- data.frame(`Cut_Group_Z3` = 400)
 
 degudent_prediction <- predict(degudent_model_omit, d_new_data, interval = "prediction", level = 0.95)
 zirkonzahn_prediction <- predict(zirkonzahn_model_omit, z_new_data, interval = "prediction", level = 0.95)
