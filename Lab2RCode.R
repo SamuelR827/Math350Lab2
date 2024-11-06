@@ -89,8 +89,8 @@ cat("Predicted Cut Level for Zirkonzahn at ΔE00 = 1.8:", zirkonzahn_cut_estimat
 # Question 3
 ############################################################################
 
-degudent_data_omit <- subset(data, !(`Desired Cut` %in% c(300, 400, 500)))
-zirkonzahn_data_omit <- subset(data, !(`Desired Cut` %in% c(500)))
+degudent_data_omit <- subset(data, !(`Desired Cut` %in% c(0, 300, 400, 500)))
+zirkonzahn_data_omit <- subset(data, !(`Desired Cut` %in% c(0, 500)))
 
 degudent_model_omit <- lm(dE00_Group_D3 ~ Cut_Group_D3, data = degudent_data_omit)
 zirkonzahn_model_omit <- lm(dE00_Group_Z3 ~ Cut_Group_Z3, data = zirkonzahn_data_omit)
@@ -124,5 +124,30 @@ ggplot(zirkonzahn_data_omit, aes(x = Cut_Group_Z3, y = dE00_Group_Z3)) +
   xlab("Cut Level (Zirkonzahn)") +
   ylab("ΔE00 (Zirkonzahn)") +
   theme_minimal()
+
+
+############################################################################
+# Question 4
+############################################################################
+
+# Check assumptions for Degudent model
+par(mfrow = c(2, 2))
+plot(degudent_model_omit)
+
+# Check assumptions for Zirkonzahn model
+plot(zirkonzahn_model_omit)
+par(mfrow = c(1, 1))
+
+# Degudent prediction with confidence interval
+d_new_data <- data.frame(Cut_Group_D3 = 500) # Replace 500 with your target value if different
+degudent_prediction <- predict(degudent_model_omit, d_new_data, interval = "confidence", level = 0.95)
+
+# Zirkonzahn prediction with confidence interval
+z_new_data <- data.frame(Cut_Group_Z3 = 500) # Replace 500 with your target value if different
+zirkonzahn_prediction <- predict(zirkonzahn_model_omit, z_new_data, interval = "confidence", level = 0.95)
+
+# Display predictions and confidence intervals
+degudent_prediction
+zirkonzahn_prediction
 
 
