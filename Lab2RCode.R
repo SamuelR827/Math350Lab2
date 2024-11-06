@@ -83,3 +83,20 @@ zirkonzahn_cut_estimate <- (y_h - zirkonzahn_intercept) / zirkonzahn_slope
 # Display estimated cut levels
 cat("Predicted Cut Level for Degudent at ΔE00 = 1.8:", degudent_cut_estimate, "\n")
 cat("Predicted Cut Level for Zirkonzahn at ΔE00 = 1.8:", zirkonzahn_cut_estimate, "\n")
+
+
+############################################################################
+# Question 3
+############################################################################
+
+degudent_data_omit500 <- subset(data, `Cut_Group_D3` != 500)
+zirkonzahn_data_omit500 <-subset(data, `Cut_Group_Z3` != 500)
+degudent_model_omit500 <- lm(dE00_Group_D3 ~ Cut_Group_D3, data = data)
+zirkonzahn_model_omit500 <- lm(dE00_Group_Z3 ~ Cut_Group_Z3, data = data)
+d_new_data_500 <- data.frame(`Cut_Group_D3` = 500)
+z_new_data_500 <- data.frame(`Cut_Group_Z3` = 500)
+degudent_prediction <- predict(degudent_model_omit500, d_new_data_500, interval = "prediction", level = 0.95)
+zirkonzahn_prediction <- predict(zirkonzahn_model_omit500, z_new_data_500, interval = "prediction", level = 0.95)
+degudent_prediction
+zirkonzahn_prediction
+
