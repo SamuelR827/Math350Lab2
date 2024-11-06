@@ -89,14 +89,22 @@ cat("Predicted Cut Level for Zirkonzahn at ΔE00 = 1.8:", zirkonzahn_cut_estimat
 # Question 3
 ############################################################################
 
-degudent_data_omit500 <- subset(data, `Cut_Group_D3` != 500)
-zirkonzahn_data_omit500 <-subset(data, `Cut_Group_Z3` != 500)
-degudent_model_omit500 <- lm(dE00_Group_D3 ~ Cut_Group_D3, data = data)
-zirkonzahn_model_omit500 <- lm(dE00_Group_Z3 ~ Cut_Group_Z3, data = data)
-d_new_data_500 <- data.frame(`Cut_Group_D3` = 500)
-z_new_data_500 <- data.frame(`Cut_Group_Z3` = 500)
-degudent_prediction <- predict(degudent_model_omit500, d_new_data_500, interval = "prediction", level = 0.95)
-zirkonzahn_prediction <- predict(zirkonzahn_model_omit500, z_new_data_500, interval = "prediction", level = 0.95)
+degudent_data_omit <- subset(data, !(`Desired Cut` %in% c(400, 500)))
+zirkonzahn_data_omit <- subset(data, !(`Desired Cut` %in% c(400, 500)))
+
+degudent_model_omit <- lm(dE00_Group_D3 ~ Cut_Group_D3, data = degudent_data_omit)
+zirkonzahn_model_omit <- lm(dE00_Group_Z3 ~ Cut_Group_Z3, data = zirkonzahn_data_omit)
+
+summary(degudent_model_omit)
+summary(zirkonzahn_model_omit)
+
+d_new_data <- data.frame(`Cut_Group_D3` = 500)
+z_new_data <- data.frame(`Cut_Group_Z3` = 500)
+
+degudent_prediction <- predict(degudent_model_omit, d_new_data, interval = "prediction", level = 0.95)
+zirkonzahn_prediction <- predict(zirkonzahn_model_omit, z_new_data, interval = "prediction", level = 0.95)
+
 degudent_prediction
 zirkonzahn_prediction
+
 
