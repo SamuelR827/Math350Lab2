@@ -6,6 +6,7 @@ X and ΔE 00 for Y. Provide the scatter plot with the regression curve and a sum
 analysis. Comment on how well your model fits the data.
 
 See the attached picture for the scatter plot: 
+
 ![Scatter Plot Degudent](Pictures/Scatter-Plot-Degudent-Group-600x500.png)
 ![Scatter Plot Zirkonzahn](Pictures/Scatter-Plot-Zirkonzahn-Group-600x500.png)
 
@@ -139,6 +140,7 @@ they were outside of our prediction interval. For Zirkonzahn, we only removed da
 at the 500 level, because that gave us the best R-squared.
 
 Adjusted scatter plots:
+
 ![Scatter Plot Degudent Omitted](Pictures/Scatter-Plot-Degudent-Group-Omitted-600x500.png)
 ![Scatter Plot Zirkonzahn Omitted](Pictures/Scatter-Plot-Zirkonzahn-Group-Omitted-600x500.png)
 
