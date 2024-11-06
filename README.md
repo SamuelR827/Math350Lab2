@@ -134,4 +134,14 @@ We found that for Degudent, we needed to omit 300, 400, and 500 from our data be
 they were outside of our prediction interval. For Zirkonzahn, all given data was 
 inside our prediction interval, so nothing had to be removed.
 
+---
 
+4.) Check the assumptions for calculating a confidence interval for ^xh, and use a 0.05 significance level to
+find the confidence intervals for the predicted values in part (3). To find the confidence interval for^xh,
+we take (see main project docs for formula, broke on paste into file)
+
+Cut level ^xh for Degudent is ______________ Confidence Interval for ^xh is ________________________
+Cut level ^xh for Zirkonzahn is _____________ Confidence Interval for ^xh is ________________________
+
+Compare the two cut levels for Degudent and Zirkonzahn. Is there a statistically significant difference?
+Justify your answer.
