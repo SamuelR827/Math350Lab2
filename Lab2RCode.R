@@ -89,8 +89,8 @@ cat("Predicted Cut Level for Zirkonzahn at ΔE00 = 1.8:", zirkonzahn_cut_estimat
 # Question 3
 ############################################################################
 
-degudent_data_omit <- subset(data, !(`Desired Cut` %in% c(400, 500)))
-zirkonzahn_data_omit <- subset(data, !(`Desired Cut` %in% c(400, 500)))
+degudent_data_omit <- subset(data, !(`Desired Cut` %in% c(300, 400, 500)))
+zirkonzahn_data_omit <- subset(data, !(`Desired Cut` %in% c()))
 
 degudent_model_omit <- lm(dE00_Group_D3 ~ Cut_Group_D3, data = degudent_data_omit)
 zirkonzahn_model_omit <- lm(dE00_Group_Z3 ~ Cut_Group_Z3, data = zirkonzahn_data_omit)
@@ -98,13 +98,31 @@ zirkonzahn_model_omit <- lm(dE00_Group_Z3 ~ Cut_Group_Z3, data = zirkonzahn_data
 summary(degudent_model_omit)
 summary(zirkonzahn_model_omit)
 
-d_new_data <- data.frame(`Cut_Group_D3` = 400)
-z_new_data <- data.frame(`Cut_Group_Z3` = 400)
+d_new_data <- data.frame(`Cut_Group_D3` = 500)
+z_new_data <- data.frame(`Cut_Group_Z3` = 500)
 
 degudent_prediction <- predict(degudent_model_omit, d_new_data, interval = "prediction", level = 0.95)
 zirkonzahn_prediction <- predict(zirkonzahn_model_omit, z_new_data, interval = "prediction", level = 0.95)
 
 degudent_prediction
 zirkonzahn_prediction
+
+# Plot for Degudent Group
+ggplot(degudent_data_omit, aes(x = Cut_Group_D3, y = dE00_Group_D3)) +
+  geom_point() +
+  geom_smooth(method = "lm", col = "blue") +
+  ggtitle("Degudent Group Omitted: Cut Level vs ΔE00") +
+  xlab("Cut Level (Degudent)") +
+  ylab("ΔE00 (Degudent)") +
+  theme_minimal()
+
+# Plot for Zirkonzahn Group
+ggplot(zirkonzahn_data_omit, aes(x = Cut_Group_Z3, y = dE00_Group_Z3)) +
+  geom_point() +
+  geom_smooth(method = "lm", col = "red") +
+  ggtitle("Zirkonzahn Group Omitted: Cut Level vs ΔE00") +
+  xlab("Cut Level (Zirkonzahn)") +
+  ylab("ΔE00 (Zirkonzahn)") +
+  theme_minimal()
 
 

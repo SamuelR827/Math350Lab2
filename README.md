@@ -118,5 +118,20 @@ Results:
     
     Predicted Cut Level for Zirkonzahn at ΔE00 = 1.8: 98.10153 
     
+---
+
+3.) What cut levels should you include in your linear regression to best estimate 
+your cut level corresponding to the acceptability threshold of ΔE00=1.8 μm? 
+Explain your thinking. *This might be different for Degudent and Zirkonzahn.*
+
+Fit your data with a regression curve, provide the scatter plot with the regression 
+line, and a summary analysis. Recalculate the estimated cut level for the acceptability 
+threshold using the new regression model. Comment on why you chose this interval 
+and the overall fit of your regression line as it pertains to the estimated cut 
+level for the acceptability threshold.
+
+We found that for Degudent, we needed to omit 300, 400, and 500 from our data because
+they were outside of our prediction interval. For Zirkonzahn, all given data was 
+inside our prediction interval, so nothing had to be removed.
 
 
