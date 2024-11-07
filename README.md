@@ -5,7 +5,7 @@ Fit a regression model of Y vs X for your two groups for Degudent and Zirkonzahn
 X and ΔE 00 for Y. Provide the scatter plot with the regression curve and a summary of your regression
 analysis. Comment on how well your model fits the data.
 
-See the attached picture for the scatter plot: 
+See the attached pictures for the scatter plot: 
 
 ![Scatter Plot Degudent](Pictures/Scatter-Plot-Degudent-Group-600x500.png)
 ![Scatter Plot Zirkonzahn](Pictures/Scatter-Plot-Zirkonzahn-Group-600x500.png)
@@ -135,11 +135,48 @@ threshold using the new regression model. Comment on why you chose this interval
 and the overall fit of your regression line as it pertains to the estimated cut 
 level for the acceptability threshold.
 
+    degudent_data_omit <- subset(data, !(`Desired Cut` %in% c(0, 300, 400, 500)))
+    zirkonzahn_data_omit <- subset(data, !(`Desired Cut` %in% c(0, 500)))
+    
+    degudent_model_omit <- lm(dE00_Group_D3 ~ Cut_Group_D3, data = degudent_data_omit)
+    zirkonzahn_model_omit <- lm(dE00_Group_Z3 ~ Cut_Group_Z3, data = zirkonzahn_data_omit)
+    
+    summary(degudent_model_omit)
+    summary(zirkonzahn_model_omit)
+    
+    d_new_data <- data.frame(`Cut_Group_D3` = 500)
+    z_new_data <- data.frame(`Cut_Group_Z3` = 500)
+    
+    degudent_prediction <- predict(degudent_model_omit, d_new_data, interval = "prediction", level = 0.95)
+    zirkonzahn_prediction <- predict(zirkonzahn_model_omit, z_new_data, interval = "prediction", level = 0.95)
+    
+    degudent_prediction
+    zirkonzahn_prediction
+    
+    # Plot for Degudent Group
+    ggplot(degudent_data_omit, aes(x = Cut_Group_D3, y = dE00_Group_D3)) +
+      geom_point() +
+      geom_smooth(method = "lm", col = "blue") +
+      ggtitle("Degudent Group Omitted: Cut Level vs ΔE00") +
+      xlab("Cut Level (Degudent)") +
+      ylab("ΔE00 (Degudent)") +
+      theme_minimal()
+
+    # Plot for Zirkonzahn Group
+    ggplot(zirkonzahn_data_omit, aes(x = Cut_Group_Z3, y = dE00_Group_Z3)) +
+    geom_point() +
+    geom_smooth(method = "lm", col = "red") +
+    ggtitle("Zirkonzahn Group Omitted: Cut Level vs ΔE00") +
+    xlab("Cut Level (Zirkonzahn)") +
+    ylab("ΔE00 (Zirkonzahn)") +
+    theme_minimal()
+
+
 We found that for Degudent, we needed to omit 300, 400, and 500 from our data because
 they were outside of our prediction interval. For Zirkonzahn, we only removed data
 at the 500 level, because that gave us the best R-squared.
 
-Adjusted scatter plots:
+See the attached pictures for the Adjusted scatter plot: 
 
 ![Scatter Plot Degudent Omitted](Pictures/Scatter-Plot-Degudent-Group-Omitted-600x500.png)
 ![Scatter Plot Zirkonzahn Omitted](Pictures/Scatter-Plot-Zirkonzahn-Group-Omitted-600x500.png)
@@ -154,14 +191,35 @@ we take (see main project docs for formula, broke on paste into file)
 Compare the two cut levels for Degudent and Zirkonzahn. Is there a statistically significant difference?
 Justify your answer.
 
+    # Check assumptions for Degudent model
+    par(mfrow = c(2, 2))
+    plot(degudent_model_omit)
+    
+    # Check assumptions for Zirkonzahn model
+    plot(zirkonzahn_model_omit)
+    par(mfrow = c(1, 1))
+    
+    # Degudent prediction with confidence interval
+    d_new_data <- data.frame(Cut_Group_D3 = 100)
+    degudent_prediction <- predict(degudent_model_omit, d_new_data, interval = "confidence", level = 0.95)
+    
+    # Zirkonzahn prediction with confidence interval
+    z_new_data <- data.frame(Cut_Group_Z3 = 100)
+    zirkonzahn_prediction <- predict(zirkonzahn_model_omit, z_new_data, interval = "confidence", level = 0.95)
+    
+    # Display predictions and confidence intervals
+    degudent_prediction
+    zirkonzahn_prediction
 
-Cut level ^xh for Degudent is 100
+Results:
 
-Confidence Interval for ^xh is (1.9001, 2.068229)
-
-Cut level ^xh for Zirkonzahn is 100
-
-Confidence Interval for ^xh is (1.804379, 1.92392)
+    Cut level ^xh for Degudent is 100
+    
+    Confidence Interval for ^xh is (1.9001, 2.068229)
+    
+    Cut level ^xh for Zirkonzahn is 100
+    
+    Confidence Interval for ^xh is (1.804379, 1.92392)
 
 The confidence interval has a small overlap, suggesting that the there is no 
 significant difference between the two cut levels.
